@@ -1032,8 +1032,12 @@ function closePiggyIconSvg(){
   return `<svg class="close-piggy-icon" viewBox="0 0 64 64" aria-hidden="true"><g fill="#FF4B4B" stroke="#8E2020" stroke-width="2"><ellipse cx="32" cy="35" rx="20" ry="17"/><circle cx="18" cy="20" r="8"/><circle cx="46" cy="20" r="8"/></g><circle cx="25" cy="33" r="2.5" fill="#fff"/><circle cx="39" cy="33" r="2.5" fill="#fff"/><ellipse cx="32" cy="41" rx="9" ry="6" fill="#FF9A9A" stroke="#8E2020" stroke-width="2"/><circle cx="29" cy="41" r="1.5" fill="#8E2020"/><circle cx="35" cy="41" r="1.5" fill="#8E2020"/><path d="M32 4v13M25.5 7.5a12 12 0 1 0 13 0" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/></svg>`;
 }
 function sluitPiggybank(){
-  // Een gewone webpagina/PWA mag zichzelf niet gegarandeerd beëindigen.
-  // Probeer alleen te sluiten als het platform dit toestaat; nooit terug naar GitHub.
+  // Nooit naar GitHub of een andere pagina navigeren.
+  // In een zelfstandig geopend venster/PWA kan het systeem het venster sluiten.
+  try{
+    window.open('', '_self');
+    window.close();
+  }catch(e){}
   try{ window.close(); }catch(e){}
 }
 
